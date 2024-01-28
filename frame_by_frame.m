@@ -1,6 +1,6 @@
 %% frame-by-frame video viewer:
 % load the video:
-videosPath = strcat(exp_path,'/block2/videos/back_20230822T130253.mp4');
+videosPath = '/media/sil3/Data/Amphibians/Electrodes/BP30_telencephalon/2023_11_30_BP30_Trial4_Night3_4_26C_PT1/Video/videos/sleep_ir_20231130T163004.mp4';
 vidObj = VideoReader(videosPath);
 
 %% Choose the frame number you want to view
@@ -16,7 +16,7 @@ imshow(frame);
 %end
 
 %% moving frame-by-frame:
-currentFrame = 
+currentFrame = 10;
 %currentFrame = strikesFrames(10)-20;
 disp(currentFrame)
 while hasFrame(vidObj)
