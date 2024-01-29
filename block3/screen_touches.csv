@@ -1,0 +1,8 @@
+,time,x,y,bug_x,bug_y,is_hit,is_reward_any_touch,is_reward_bug,is_climbing,bug_type,bug_size,in_block_trial_id,trial_id
+0,2024-01-17T14:13:20.918000+02:00,608,805,654,824,True,False,True,False,worm,225,2,3042
+0,2024-01-17T14:13:47.172000+02:00,650,806,720,824,True,False,True,False,worm,224,3,3043
+0,2024-01-17T14:16:08.675000+02:00,998,794,956,824,True,False,True,False,worm,226,8,3048
+0,2024-01-17T14:17:32.588000+02:00,484,814,516,824,True,False,True,False,worm,221,11,3051
+0,2024-01-17T14:19:49.826000+02:00,791,802,844,824,True,False,True,False,worm,222,16,3056
+0,2024-01-17T14:20:18.430000+02:00,877,794,826,824,True,False,True,False,worm,224,17,3057
+0,2024-01-17T14:21:44.383000+02:00,1013,795,990,824,True,False,True,False,worm,224,20,3060
