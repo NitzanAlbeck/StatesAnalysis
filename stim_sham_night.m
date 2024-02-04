@@ -1,6 +1,6 @@
 
-SA=sleepAnalysis('/media/sil1/Pogona Vitticeps/brainStatesWake.xlsx');
-SA.setCurrentRecording('Animal=PV149,recNames=typical2');
+% SA=sleepAnalysis('/media/sil1/Pogona Vitticeps/brainStatesWake.xlsx');
+% SA.setCurrentRecording('Animal=PV161,recNames=typical2');
 DB = SA.getDelta2BetaRatio;
 AC = SA.getDelta2BetaAC;
 T=  SA.getDigitalTriggers;
@@ -51,8 +51,8 @@ saveas (gcf, fileName);
 
 %%
 
-SA=sleepAnalysis('/media/sil1/Pogona Vitticeps/brainStatesWake.xlsx');
-SA.setCurrentRecording('Animal=PV149,recNames=Night9');
+% SA=sleepAnalysis('/media/sil1/Pogona Vitticeps/brainStatesWake.xlsx');
+% SA.setCurrentRecording('Animal=PV149,recNames=Night9');
 
 SC=SA.getSlowCycles;
 DB=SA.getDelta2BetaRatio;

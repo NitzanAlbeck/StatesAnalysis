@@ -9,6 +9,7 @@
 %       camera triggers chanel.
 %   -- triggers are by defenition will be different for this animal. adjust
 %   the code accordingly. problem expained near "num_missing_frames".
+%   --- fix get camera triggers
 %   
 % WHY ARE THE TIMESTAMPS IN S and not MS?!
 %
@@ -102,7 +103,7 @@ end
 % start trial
 
 fullTraceWin = 8000; % in ms
-% fs = SA.currentDataObj.samplingFrequency(1); %samples per sec
+fs = SA.currentDataObj.samplingFrequency(1); %samples per sec
 defCh = SA.recTable.defaulLFPCh(SA.currentPRec);
 
 [fullTraceSTrial, fullTraceTimes]= SA.currentDataObj.getData(defCh,oeStartTrial-(fullTraceWin/2),fullTraceWin);
@@ -111,16 +112,46 @@ defCh = SA.recTable.defaulLFPCh(SA.currentPRec);
 fullTraceSTrial(fullTraceSTrial>500)=500;
 
 %%
-figure;plot(fullTraceTimes,squeeze(fullTraceSTrial(1,5,:)))
-%%
+figure;
+% Set the position and size of the figure
+newPosition = [100, 100, 1200, 500]; % [left, bottom, width, height]
+set(gcf, 'Position', newPosition);
+plotWin = 1*fs:length(fullTraceTimes)-1*fs;
+trialnum = 4;
+plot(fullTraceTimes(plotWin),squeeze(fullTraceSTrial(1,trialnum,plotWin)),'Color','black','LineWidth',1)
+xline(fullTraceWin/2,'r'); ylabel('uV');xlabel ('Time[ms]');
+titlestr = sprintf('Single Trial #%d',trialnum);
+title(titlestr)
+saveas(gcf,strcat(SA.currentPlotFolder, '/bugApperanceSingleTrial.jpg'));
+
+%% fulltraces plot
 figure;
 
-plotShifted(fullTraceTimes, squeeze(FullTraceSTrial).','verticalShift',0.05);
+plotShifted(fullTraceTimes, squeeze(fullTraceSTrial).','verticalShift',500);
 xline(fullTraceWin/2,'r'); ylabel('uV');xlabel ('Time[ms]');
 title('Bug apperance, for one block')
 saveas(gcf,strcat(SA.currentPlotFolder, '/bugApperanceFull.jpg'));
 
+%% one trial full trace
+extraTime = 6000; %(ms)
+trialLengths = oeEndTrial-oeStartTrial;
+trialnum = 1;
+[singleTrial,singleTrialtimes] = SA.currentDataObj.getData(defCh, ...
+    oeStartTrial(trialnum)-extraTime,trialLengths(trialnum)+2*extraTime);
 
+figure;
+
+plot(singleTrialtimes/1000,squeeze(singleTrial),'Color','black');
+xline(extraTime/1000,'r');
+xline((trialLengths(trialnum)+extraTime)/1000,'b');
+legend('Trace','Start Trial','End Trial')
+ylabel('uV');xlabel ('Time[s]');
+ylim([-600,600]);
+xlim([0,singleTrialtimes(end)]/1000)
+newPosition = [100, 100, 1500, 500]; % [left, bottom, width, height]
+set(gcf, 'Position', newPosition);
+title(sprintf('Single Trial #%d',trialnum))
+saveas(gcf,strcat(SA.currentPlotFolder, '/singlefulltrial.jpeg'));
 %% get the data for each of the segmentations.
 % instacnese:
 % window- 3 seconds (for each part)
@@ -130,7 +161,7 @@ saveas(gcf,strcat(SA.currentPlotFolder, '/bugApperanceFull.jpg'));
 win = 10000; % in ms
 fs = SA.currentDataObj.samplingFrequency(1); %samples per sec
 times = linspace(1,win,(win/1000)*fs); % time vector
-defCh = 9;
+defCh = 10;
 % Bug apperance: before and after
 
 postStart = SA.currentDataObj.getData(defCh,oeStartTrial,win);
@@ -167,10 +198,10 @@ meanPreStart = mean(preStart,1);
 %ploting
 figure
 subplot(2,1,1);
-plotShifted(times, squeeze(meanPreStart).','verticalShift',0.05);
+plotShifted(times, squeeze(meanPreStart).','verticalShift',500);
 title('Before Bug Apperance')
 subplot(2,1,2);
-plotShifted(times, squeeze(meanPostStart(1,1:24,:)).','verticalShift',0.05);
+plotShifted(times, squeeze(meanPostStart).','verticalShift',500);
 title('After Bug Apperance')
 xlabel ('Time(ms)')
 sgtitle (sprintf("Traces of 25 trial, before/after bug apperance. Ch %d",defCh))
@@ -216,8 +247,8 @@ hold off
 welchWin = 1*fs; 
 
 %calculate the ppx:
-[ppxPre,f1] = pwelch(squeeze(preStart(1,1:24,:)).',welchWin,welchWin/2,[],fs);
-[ppxPost,f2] = pwelch(squeeze(postStart(1,1:24,:)).',welchWin,welchWin/2,[],fs);
+[ppxPre,f1] = pwelch(squeeze(preStart(1,:,:)).',welchWin,welchWin/2,[],fs);
+[ppxPost,f2] = pwelch(squeeze(postStart(1,:,:)).',welchWin,welchWin/2,[],fs);
 meanPPXpre = median(ppxPre,2);
 meanPPXpost = median(ppxPost,2);
 
@@ -245,6 +276,8 @@ ntmaenPPX = (meanNTpre + meanNTpost)/2;
 normPPXPre = meanNTpre - ntmaenPPX;
 normPPXPost = meanNTpost - ntmaenPPX;
 figure;
+newPosition = [100, 100, 1000, 500]; % [left, bottom, width, height]
+set(gcf, 'Position', newPosition);
 plot(f1(1:100),normPPXPre(1:100,:),'Color','black',LineWidth=2);
 hold on
 plot(f2(1:100),normPPXPost(1:100,:),'Color','r',LineWidth=2)
