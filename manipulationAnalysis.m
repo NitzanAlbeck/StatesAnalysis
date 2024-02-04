@@ -144,6 +144,47 @@ title('Post Stim', num2str(numel(topPostState)))
 lgd = legend(legend_entries);
 lgd.Layout.Tile = 'east';
 saveas(gcf,strcat(SA.currentPlotFolder,filesep,'maxDBpie.jpeg'));
+
+%% Accelerometer Data!
+SA = sleepAnalysis('/media/sil1/Data/Pogona Vitticeps/brainStatesWake.xlsx');
+SA.setCurrentRecording('Animal=PV161,recNames=Night10');
+
+
+AUX = SA.getLizardMovements;
+DB = SA.getDelta2BetaRatio;
+AC = SA.getDelta2BetaAC;
+T=  SA.getDigitalTriggers;
+firstTrig=T.tTrig{15}(1:8:end);
+endStim=T.tTrig{15}(8:8:end)+400;
+
+% sum the movements counts and amoumt in 1000 ms bins:
+
+timeBins = DB.t_ms;
+% Use discretize to assign each time to a bin
+binIndices = discretize(AUX.t_mov_ms, timeBins);
+binIndices(isnan(binIndices)) = 1;
+% Calculate the mean intensity for each bin using accumarray
+meanMov = accumarray(binIndices', AUX.movAll, [], @mean, 0);
+if length(meanMov)<length(timeBins)
+    meanMov = [meanMov; zeros(length(timeBins)-length(meanMov),1)];
+end
+
+trig = SA.getDigitalTriggers;
+stimT = trig.tTrig{15};
+% Replace NaN with 0 for bins with no events
+%meanMov(isnan(meanMov)) = 0;
+
+%plot
+figure;
+plot(timeBins, meanMov,'black')
+
+xline(AC.tStartSleep,'b'); xline(AC.tEndSleep,'b');
+xline(stimT(1),'r');xline(stimT(end),'r')
+xlabel('Time[ms]'); ylabel('Movements');
+legend('MeanMovement','tStartsleep','tEndSleep','StartStim','EndStim');
+
+saveas(gcf,strcat(SA.currentPlotFolder,filesep,'ovenightMov.jpeg'));
+
 %% functions:
 function getSinglesStim(rec, trig_ch, stim_color ,pre_ms, win)
     % rec - an OErecording.
