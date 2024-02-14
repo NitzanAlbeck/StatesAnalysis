@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EXPERIMENT version="0.5" number="1" separatefiles="0">
+  <RECORDING number="0" samplerate="20000">
+    <PROCESSOR id="101">
+      <CHANNEL name="CH1" bitVolts="0.19499999284744262695" filename="107_1.continuous"
+               position="1024"/>
+      <CHANNEL name="CH2" bitVolts="0.19499999284744262695" filename="107_2.continuous"
+               position="1024"/>
+      <CHANNEL name="CH3" bitVolts="0.19499999284744262695" filename="107_3.continuous"
+               position="1024"/>
+      <CHANNEL name="CH4" bitVolts="0.19499999284744262695" filename="107_4.continuous"
+               position="1024"/>
+      <CHANNEL name="CH5" bitVolts="0.19499999284744262695" filename="107_5.continuous"
+               position="1024"/>
+      <CHANNEL name="CH6" bitVolts="0.19499999284744262695" filename="107_6.continuous"
+               position="1024"/>
+      <CHANNEL name="CH7" bitVolts="0.19499999284744262695" filename="107_7.continuous"
+               position="1024"/>
+      <CHANNEL name="CH8" bitVolts="0.19499999284744262695" filename="107_8.continuous"
+               position="1024"/>
+      <CHANNEL name="CH9" bitVolts="0.19499999284744262695" filename="107_9.continuous"
+               position="1024"/>
+      <CHANNEL name="CH10" bitVolts="0.19499999284744262695" filename="107_10.continuous"
+               position="1024"/>
+      <CHANNEL name="CH11" bitVolts="0.19499999284744262695" filename="107_11.continuous"
+               position="1024"/>
+      <CHANNEL name="CH12" bitVolts="0.19499999284744262695" filename="107_12.continuous"
+               position="1024"/>
+      <CHANNEL name="CH13" bitVolts="0.19499999284744262695" filename="107_13.continuous"
+               position="1024"/>
+      <CHANNEL name="CH14" bitVolts="0.19499999284744262695" filename="107_14.continuous"
+               position="1024"/>
+      <CHANNEL name="CH15" bitVolts="0.19499999284744262695" filename="107_15.continuous"
+               position="1024"/>
+      <CHANNEL name="CH16" bitVolts="0.19499999284744262695" filename="107_16.continuous"
+               position="1024"/>
+      <CHANNEL name="CH17" bitVolts="0.19499999284744262695" filename="107_17.continuous"
+               position="1024"/>
+      <CHANNEL name="CH18" bitVolts="0.19499999284744262695" filename="107_18.continuous"
+               position="1024"/>
+      <CHANNEL name="CH19" bitVolts="0.19499999284744262695" filename="107_19.continuous"
+               position="1024"/>
+      <CHANNEL name="CH20" bitVolts="0.19499999284744262695" filename="107_20.continuous"
+               position="1024"/>
+      <CHANNEL name="CH21" bitVolts="0.19499999284744262695" filename="107_21.continuous"
+               position="1024"/>
+      <CHANNEL name="CH22" bitVolts="0.19499999284744262695" filename="107_22.continuous"
+               position="1024"/>
+      <CHANNEL name="CH23" bitVolts="0.19499999284744262695" filename="107_23.continuous"
+               position="1024"/>
+      <CHANNEL name="CH24" bitVolts="0.19499999284744262695" filename="107_24.continuous"
+               position="1024"/>
+      <CHANNEL name="CH25" bitVolts="0.19499999284744262695" filename="107_25.continuous"
+               position="1024"/>
+      <CHANNEL name="CH26" bitVolts="0.19499999284744262695" filename="107_26.continuous"
+               position="1024"/>
+      <CHANNEL name="CH27" bitVolts="0.19499999284744262695" filename="107_27.continuous"
+               position="1024"/>
+      <CHANNEL name="CH28" bitVolts="0.19499999284744262695" filename="107_28.continuous"
+               position="1024"/>
+      <CHANNEL name="CH29" bitVolts="0.19499999284744262695" filename="107_29.continuous"
+               position="1024"/>
+      <CHANNEL name="CH30" bitVolts="0.19499999284744262695" filename="107_30.continuous"
+               position="1024"/>
+      <CHANNEL name="CH31" bitVolts="0.19499999284744262695" filename="107_31.continuous"
+               position="1024"/>
+      <CHANNEL name="CH32" bitVolts="0.19499999284744262695" filename="107_32.continuous"
+               position="1024"/>
+      <CHANNEL name="AUX1" bitVolts="3.7400001019705086946e-05" filename="107_33.continuous"
+               position="1024"/>
+      <CHANNEL name="AUX2" bitVolts="3.7400001019705086946e-05" filename="107_34.continuous"
+               position="1024"/>
+      <CHANNEL name="AUX3" bitVolts="3.7400001019705086946e-05" filename="107_35.continuous"
+               position="1024"/>
+    </PROCESSOR>
+  </RECORDING>
+</EXPERIMENT>

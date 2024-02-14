@@ -1,0 +1,263 @@
+AGENT_MIN_DURATION_BETWEEN_PUBLISH: 7200
+APP_SCREEN: :0.0
+ARENA_DISPLAY: :0
+ARENA_NAME: reptilearn3
+ARUCO_MARKER_SIZE: 2.65
+CHESSBOARD_DIM:
+- 9
+- 6
+DAY_LIGHT_NAME: day_lights
+DEFAULT_EXPOSURE: 5000
+DISABLE_ARENA_SCREEN: false
+DISABLE_CAMERAS_CHECK: false
+DISABLE_DB: false
+DISABLE_PERIPHERY: false
+DISABLE_SCHEDULER: false
+DLC_FOLDER: /data/Pogona_Pursuit/output/models/deeplabcut
+DWH_HOST: 132.66.212.143
+DWH_N_TRIES: 5
+DWH_URL: postgresql+psycopg2://postgres:password@132.66.212.143:5432/arena
+EXPERIMENTS_DIR: /data/Pogona_Pursuit/output/experiments
+FEEDER_NAME: Feeder 1
+FLASK_PORT: 5084
+HOLD_TRIGGERS_TIME: 2
+IR_LIGHT_NAME: IR_lights
+IR_NAME: IR_lights
+IS_AGENT_ENABLED: false
+IS_ANALYSIS_ONLY: false
+IS_CHECK_SCREEN_MAPPING: false
+IS_COMMIT_TO_DWH: true
+IS_HOLD_TRIGGERS: true
+IS_RECORD_SCREEN_IN_EXPERIMENT: true
+IS_RUN_NIGHTLY_POSE_ESTIMATION: false
+IS_SCREEN_INVERTED: true
+IS_TRACKING_CAMERAS_ALLOWED: false
+LED_NAME: day_lights
+LOGGING_LEVEL: DEBUG
+MAX_COMPRESSION_THREADS: 2
+MAX_DAILY_REWARD: 40
+MAX_DURATION_CONT_BLANK: 259200
+MAX_VIDEO_TIME_SEC: 0
+OUTPUT_DIR: /data/Pogona_Pursuit/output
+POGONA_HUNTER_PORT: 8080
+PSYCHO_FOLDER: /data/Pogona_Pursuit/psycho_files
+PSYCHO_PYTHON_INTERPRETER: /home/regev/anaconda3/envs/psycho/bin/python
+Path: !!python/name:pathlib.Path ''
+QUEUE_WAIT_TIME: 15
+SCHEDULE_EXPERIMENTS_END_TIME: '19:00'
+SCREEN_DISPLACEMENT: '000'
+SCREEN_RESOLUTION: 1280,1024
+SENTRY_DSN: ''
+SERIAL_BAUD: 9600
+SERIAL_PORT_TEMP: /dev/ttyACM0
+SINK_QUEUE_TIMEOUT: 60
+TELEGRAM_CHAT_ID: '725002866'
+TELEGRAM_TOKEN: 5787740972:AAFPDt4KJHGxTmGEmuFkYAS42Itm4lUbgHE
+TEST_SCREEN: :1.0
+TOUCH_SCREEN_NAME: Elo
+UI_LOGGING_LEVEL: INFO
+UserEnv: !!python/name:config.UserEnv ''
+VIDEO_WRITER_FORMAT: MJPG
+api_max_blocks_to_show: 20
+arena_modules:
+  cameras:
+    allied_vision: !!python/tuple
+    - cameras.allied_vision
+    - AlliedVisionCamera
+    flir: !!python/tuple
+    - cameras.flir
+    - FLIRCamera
+  image_handlers:
+    pogona_head: !!python/tuple
+    - image_handlers.predictor_handlers
+    - PogonaHeadHandler
+    tongue_out: !!python/tuple
+    - image_handlers.predictor_handlers
+    - TongueOutHandler
+  predictors:
+    deeplabcut: !!python/tuple
+    - analysis.predictors.deeplabcut
+    - DLCPose
+    pogona_head: !!python/tuple
+    - analysis.predictors.pogona_head
+    - PogonaHead
+    tongue_out: !!python/tuple
+    - analysis.predictors.tongue_out
+    - TongueOutAnalyzer
+array_queue_size_mb: 100
+blank_rec_types:
+- trials
+- continuous
+calibration_dir: /data/Pogona_Pursuit/output/calibrations
+camera_on_min_duration: 600.0
+cameras:
+  back:
+    always_on: 1
+    exposure: 5000
+    id: 22398347
+    image_size:
+    - 1080
+    - 1440
+    is_color: 0
+    module: flir
+    output_dir: null
+    predictors: {}
+    trigger_source: Line3
+    writing_fps: 60
+  left:
+    always_on: 1
+    exposure: 5000
+    id: 21441219
+    image_size:
+    - 1080
+    - 1440
+    is_color: 0
+    module: flir
+    output_dir: null
+    predictors: {}
+    trigger_source: Line3
+    writing_fps: 60
+  right:
+    always_on: 1
+    exposure: 5000
+    id: 22331095
+    image_size:
+    - 1080
+    - 1440
+    is_color: 0
+    module: flir
+    output_dir: null
+    predictors: {}
+    trigger_source: Line3
+    writing_fps: 60
+  sleep_ir:
+    always_on: 1
+    exposure: 15000
+    id: 20216193
+    image_size:
+    - 1080
+    - 1440
+    is_color: 0
+    module: flir
+    output_dir: null
+    predictors: {}
+    trigger_source: Line3
+  top:
+    always_on: 1
+    exposure: 6000
+    id: 20488273
+    image_size:
+    - 1080
+    - 1440
+    is_color: 0
+    module: flir
+    output_dir: null
+    predictors: {}
+    trigger_source: Line3
+    writing_fps: 60
+capture_images_dir: /data/Pogona_Pursuit/output/captures
+commands_topics:
+  app_healthcheck: cmd/visual_app/healthcheck
+  arena_shutdown: cmd/management/arena_shutdown
+  end_experiment: cmd/management/end_experiment
+  heat_light: cmd/arena/heat_light
+  hide_bugs: cmd/visual_app/hide_bugs
+  hide_media: cmd/visual_app/hide_media
+  init_bugs: cmd/visual_app/init_bugs
+  init_media: cmd/visual_app/init_media
+  led_light: cmd/arena/led_light
+  reload_app: cmd/visual_app/reload_app
+  reward: cmd/arena/reward
+  strike_predicted: cmd/visual_app/strike_predicted
+count_timestamps_for_fps_calc: 200
+db_engine: postgresql+psycopg2
+db_host: localhost
+db_name: arena
+db_password: password
+db_port: 5432
+db_user: postgres
+experiment_cache_path: cached_experiments
+experiment_metrics:
+  touch:
+    csv_file: screen_touches.csv
+    is_overall_experiment: false
+    is_write_csv: true
+    is_write_db: true
+  trial_data:
+    csv_file:
+      app_events: app_events.csv
+      bug_trajectory: bug_trajectory.csv
+      video_frames: video_frames.csv
+    is_overall_experiment: false
+    is_write_csv: true
+    is_write_db: true
+experiment_types:
+  blank:
+  - blank_rec_type
+  bugs:
+  - reward_type
+  - bug_types
+  - reward_bugs
+  - bug_speed
+  - movement_type
+  - time_between_bugs
+  - is_anticlockwisetarget_drift
+  - background_color
+  - exit_hole_position
+  media:
+  - media_url
+  psycho:
+  - psycho_file
+experiments_timeout: 3600
+explore_experiment_dir: /data/Pogona_Pursuit/output/experiments
+extra_time_recording: 30
+frames_timestamps_dir: frames_timestamps
+is_debug_mode: false
+is_use_parport: false
+management_url: http://localhost:5084
+metric_channel_prefix: log/metric
+min_calib_images: 7
+mqtt:
+  host: localhost
+  port: 1884
+  publish_topic: arena_command
+  temperature_sensors:
+  - Temp
+os: !!python/module:os ''
+output_dir_key: output_dir
+pixels2cm: 0.01833304668870419
+recordings_output_dir: /data/Pogona_Pursuit/output/recordings
+redis_host: localhost
+reward_timeout: 10
+reward_types:
+- always
+- end_trial
+schedule_date_format: '%d/%m/%Y %H:%M'
+shm_buffer_dtype: uint8
+sqlalchemy_url: postgresql+psycopg2://postgres:password@localhost:5432/arena
+static_files_dir: /arena/media
+subscription_topics:
+  app_healthcheck: cmd/visual_app/healthcheck
+  arena_operations: cmd/arena/*
+  arena_shutdown: cmd/management/arena_shutdown
+  end_experiment: cmd/management/end_experiment
+  heat_light: cmd/arena/heat_light
+  hide_bugs: cmd/visual_app/hide_bugs
+  hide_media: cmd/visual_app/hide_media
+  init_bugs: cmd/visual_app/init_bugs
+  init_media: cmd/visual_app/init_media
+  led_light: cmd/arena/led_light
+  metrics_logger: log/metric/*
+  reload_app: cmd/visual_app/reload_app
+  reward: cmd/arena/reward
+  strike_predicted: cmd/visual_app/strike_predicted
+  temperature: log/metric/temperature
+  touch: log/metric/touch
+  trial_data: log/metric/trial_data
+temperature_logging_delay_sec: 5
+time_between_blocks: 300
+ui_console_channel: cmd/visual_app/console
+version: '2.2'
+websocket_url: ws://localhost:6380
+writing_video_queue_maxsize: 100
+yaml: !!python/module:yaml ''
